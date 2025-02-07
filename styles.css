@@ -1,9 +1,67 @@
+:root {
+  font-family: Roboto;
+  color: white;
+  --bg-color: #09122c;
+  --main-color: #be3144;
+}
+
 body,
 html {
   margin: 0;
   padding: 0;
 }
 
+.container {
+  display: flex;
+}
+
 body {
-  background-color: antiquewhite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--bg-color);
+  height: 100vh;
+}
+
+dialog[open] {
+  display: flex;
+  position: absolute;
+  top: 25vh;
+  flex-direction: column;
+  background-color: aqua;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 3rem;
+}
+
+.topbar > button {
+  background-color: var(--main-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5ch;
+}
+
+.entries {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.entries-block {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background-color: var(--main-color);
+  border-radius: 1ch;
+  width: 350px;
 }
