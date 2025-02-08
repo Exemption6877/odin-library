@@ -55,15 +55,29 @@ function renderLibrary(library = myLibrary) {
       const statusHTML = document.createElement("p");
       statusHTML.innerText = book.status;
       entry.appendChild(statusHTML);
+
+      const buttonsContainer = document.createElement("div");
+      buttonsContainer.classList.add("status");
+      buttonsContainer.classList.add("container");
       const removeHTML = document.createElement("button");
       removeHTML.innerText = "Remove Entry";
       removeHTML.classList.add("remove-button");
       removeHTML.classList.add(`${book.id}`);
-
       removeHTML.addEventListener("click", () => {
         entriesBlock.removeChild(entry);
       });
-      entry.appendChild(removeHTML);
+      const readHTML = document.createElement("button");
+      readHTML.classList.add("read-status");
+      readHTML.innerText = "Change status";
+      readHTML.addEventListener("click", () => {
+        statusHTML.innerText == "Read"
+          ? (book.status = "Not read")
+          : (book.status = "Read");
+        statusHTML.innerText = book.status;
+      });
+      buttonsContainer.appendChild(readHTML);
+      buttonsContainer.appendChild(removeHTML);
+      entry.appendChild(buttonsContainer);
       entriesBlock.appendChild(entry);
       book.rendered = true;
     }
@@ -75,11 +89,16 @@ function renderLibrary(library = myLibrary) {
 const dialog = document.querySelector("dialog");
 const showButton = document.querySelector("#show-dialog");
 const closeButton = document.querySelector("#close-dialog");
+const submitButton = document.querySelector("#submit");
 
 showButton.addEventListener("click", () => {
   dialog.show();
 });
 
 closeButton.addEventListener("click", () => {
+  dialog.close();
+});
+
+submitButton.addEventListener("click", () => {
   dialog.close();
 });

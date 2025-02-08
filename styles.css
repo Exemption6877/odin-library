@@ -26,14 +26,45 @@ body {
 dialog[open] {
   display: flex;
   position: absolute;
+  gap: 1rem;
   top: 25vh;
   flex-direction: column;
-  background-color: aqua;
+  background-color: var(--main-color);
+  border: 0.5rem solid var(--bg-color);
+  border-radius: 1ch;
+}
+
+dialog > button {
+  background-color: var(--bg-color);
+  border: none;
+  border-radius: 5ch;
+  color: white;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 form {
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
+  color: white;
+}
+
+form > input {
+  border: 2px solid var(--bg-color);
+  border-radius: 1ch;
+}
+#submit {
+  background-color: var(--bg-color);
+  border: none;
+  border-radius: 5ch;
+  color: white;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .topbar {
@@ -63,5 +94,22 @@ form {
   padding: 1rem;
   background-color: var(--main-color);
   border-radius: 1ch;
-  width: 350px;
+  width: 300px;
+}
+
+.status > button {
+  background-color: var(--bg-color);
+  border: none;
+  border-radius: 5ch;
+  color: white;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.status {
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }

@@ -17,15 +17,14 @@
       <h1>Library Project</h1>
       <dialog>
         <button autofocus id="close-dialog">Close</button>
-        <h3>Entry info:</h3>
         <form action="" method="post">
-          <label for="title">Book Title:</label>
+          <label for="title">Book Title</label>
           <input type="text" name="title" id="title" />
-          <label for="author">Book Author:</label>
+          <label for="author">Book Author</label>
           <input type="text" name="author" id="author" />
-          <label for="pages">Book Pages:</label>
+          <label for="pages">Book Pages</label>
           <input type="number" name="pages" id="pages" />
-          <label for="status">Book Pages:</label>
+          <label for="status">Book Pages</label>
           <select name="status" id="status">
             <option value="Read">Read</option>
             <option value="Not read">Not read</option>
@@ -35,15 +34,7 @@
       </dialog>
       <button id="show-dialog">Add entry</button>
     </div>
-    <div class="entries">
-      <div class="entries-block">
-        <h3>Title:</h3>
-        <p>Author:</p>
-        <p>Pages #:</p>
-        <p>Status:</p>
-        <button class="remove-button">Remove Entry</button>
-      </div>
-    </div>
+    <div class="entries"></div>
 
     <script src="./index.js"></script>
   </body>
