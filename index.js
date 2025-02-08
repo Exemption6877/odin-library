@@ -30,10 +30,10 @@ submit.addEventListener("click", (event) => {
 
   const entry = new Book(title, author, pages, status);
   addBookToLibrary(entry);
-  renderLibrary(myLibrary);
+  renderLibrary();
 });
 
-function renderLibrary(library) {
+function renderLibrary(library = myLibrary) {
   const entriesBlock = document.querySelector(".entries");
 
   library.forEach((book) => {
@@ -42,19 +42,28 @@ function renderLibrary(library) {
     } else {
       const entry = document.createElement("div");
       entry.classList.add(`entries-block`);
+      entry.classList.add(`${book.id}`);
       const titleHTML = document.createElement("h3");
       titleHTML.innerText = book.title;
       entry.appendChild(titleHTML);
       const authorHTML = document.createElement("p");
-      authorHTML.innerText = book.author;
+      authorHTML.innerText = `By ${book.author}`;
       entry.appendChild(authorHTML);
       const pagesHTML = document.createElement("p");
-      pagesHTML.innerText = book.pages;
+      pagesHTML.innerText = `${book.pages} pages`;
       entry.appendChild(pagesHTML);
       const statusHTML = document.createElement("p");
       statusHTML.innerText = book.status;
       entry.appendChild(statusHTML);
-      console.log(book.id);
+      const removeHTML = document.createElement("button");
+      removeHTML.innerText = "Remove Entry";
+      removeHTML.classList.add("remove-button");
+      removeHTML.classList.add(`${book.id}`);
+
+      removeHTML.addEventListener("click", () => {
+        entriesBlock.removeChild(entry);
+      });
+      entry.appendChild(removeHTML);
       entriesBlock.appendChild(entry);
       book.rendered = true;
     }
