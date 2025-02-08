@@ -5,11 +5,18 @@ function Book(title, author, pages, status) {
   this.author = author;
   this.pages = pages;
   this.status = status;
+  this.id = Book.generateId();
+  this.rendered = false;
 }
 
-function addBookToLibrary(entry) {
-  myLibrary.push(entry);
-  console.log(myLibrary);
+Book.currentId = 1;
+
+Book.generateId = function () {
+  return Book.currentId++;
+};
+
+function addBookToLibrary(book) {
+  myLibrary.push(book);
 }
 
 const submit = document.querySelector("#submit");
@@ -23,7 +30,36 @@ submit.addEventListener("click", (event) => {
 
   const entry = new Book(title, author, pages, status);
   addBookToLibrary(entry);
+  renderLibrary(myLibrary);
 });
+
+function renderLibrary(library) {
+  const entriesBlock = document.querySelector(".entries");
+
+  library.forEach((book) => {
+    if (book.rendered == true) {
+      return;
+    } else {
+      const entry = document.createElement("div");
+      entry.classList.add(`entries-block`);
+      const titleHTML = document.createElement("h3");
+      titleHTML.innerText = book.title;
+      entry.appendChild(titleHTML);
+      const authorHTML = document.createElement("p");
+      authorHTML.innerText = book.author;
+      entry.appendChild(authorHTML);
+      const pagesHTML = document.createElement("p");
+      pagesHTML.innerText = book.pages;
+      entry.appendChild(pagesHTML);
+      const statusHTML = document.createElement("p");
+      statusHTML.innerText = book.status;
+      entry.appendChild(statusHTML);
+      console.log(book.id);
+      entriesBlock.appendChild(entry);
+      book.rendered = true;
+    }
+  });
+}
 
 // Dialog
 
