@@ -1,18 +1,23 @@
 const myLibrary = [];
 
-function Book(title, author, pages, status) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.status = status;
-  this.id = Book.generateId();
-  this.rendered = false;
-}
+const Book = class {
+  static currentId = 1;
+  constructor(title, author, pages, status) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.status = status;
+    this.rendered = false;
+    this.id = Book.generateId();
+  }
 
-Book.currentId = 1;
+  static generateId() {
+    return Book.currentId++;
+  }
 
-Book.generateId = function () {
-  return Book.currentId++;
+  updateStatus() {
+    this.status = this.status === "Read" ? "Not read" : "Read";
+  }
 };
 
 function addBookToLibrary(book) {
@@ -70,9 +75,7 @@ function renderLibrary(library = myLibrary) {
       readHTML.classList.add("read-status");
       readHTML.innerText = "Change status";
       readHTML.addEventListener("click", () => {
-        statusHTML.innerText == "Read"
-          ? (book.status = "Not read")
-          : (book.status = "Read");
+        book.updateStatus();
         statusHTML.innerText = book.status;
       });
       buttonsContainer.appendChild(readHTML);
